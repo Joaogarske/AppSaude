@@ -1,0 +1,7 @@
+Apis utilizando axios 
+Login => http://localhost:8080/api/auth/login
+Registrar => http://localhost:8080/api/auth/register
+Deletar => http://localhost:8080/api/medicamento/delete?id=${id}
+Atualizar => http://localhost:8080/api/medicamento/update?id=${selectedMedicamento.id}
+Inserir => http://localhost:8080/api/medicamento/add?username=${username}
+Busca Medicamento => http://localhost:8080/api/medicamento/list?username=${username}

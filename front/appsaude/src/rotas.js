@@ -5,9 +5,11 @@ import { RegisterPage } from "./components/RegisterPage";
 import { HomePage } from "./components/HomePage";
 import {MedicamentoForm} from "./components/MedicamentoForm";
 import { MedicamentoList } from "./components/MedicamentoList";
+import { UserProvider } from "./context/UserProvider";
 
 export  function  Rotas(){
     return(
+      <UserProvider>
     <Router>
         <Routes>
           <Route path="/medicamentoForm" element={<MedicamentoForm/>} />
@@ -17,5 +19,6 @@ export  function  Rotas(){
           <Route path="/" element={<LoginPage/>} /> {/* Página inicial */}
         </Routes>
     </Router>
+    </UserProvider>
     )
 }

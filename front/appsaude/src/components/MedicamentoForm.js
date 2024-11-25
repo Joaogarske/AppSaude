@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Navegacao } from "./Navegacao";
+import { useUser } from "../context/UserProvider";
 import { Form, Button, Container, Alert } from "react-bootstrap"; // Importando componentes do React-Bootstrap
 import {  toast } from "react-toastify"; // Importando o ToastContainer e toast do react-toastify
 import 'react-toastify/dist/ReactToastify.css'; // Importando os estilos do toast
@@ -10,12 +11,14 @@ export function MedicamentoForm() {
   const [dosagem, setDosagem] = useState("");
   const [horario, setHorario] = useState("");
   const [error, setError] = useState("");
+  const {user} = useUser()
+
 
   const handleRegisterMedicamento = async (e) => {
     e.preventDefault();
 
     // Pega o nome de usuário armazenado na sessão (caso você tenha implementado login)
-    const username = "joao"; // Exemplo, você vai pegar do estado do login ou sessão
+    const username = user ; // Exemplo, você vai pegar do estado do login ou sessão
 
     try {
       const response = await axios.post(
@@ -83,7 +86,7 @@ export function MedicamentoForm() {
             />
           </Form.Group>
 
-          <Button style={{backgroundColor:"green"}} className="mt-3"  type="submit" block>
+          <Button style={{backgroundColor:"green"}} className="mt-3"  type="submit" >
             Cadastrar Medicamento
           </Button>
         </Form>

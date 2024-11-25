@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Navegacao } from "./Navegacao";
 import { Card, Button, Modal, Row, Col, Form } from "react-bootstrap"; // Importando componentes do React-Bootstrap
-
+import { useUser } from "../context/UserProvider";
 export function MedicamentoList() {
   const [medicamentos, setMedicamentos] = useState([]);
   const [showModal, setShowModal] = useState(false);  // Para controlar a exibição do modal
   const [selectedMedicamento, setSelectedMedicamento] = useState(null);  // Para armazenar o medicamento selecionado
   const [isEditing, setIsEditing] = useState(false); // Controla se está no modo de edição
-
+  const {user} = useUser()
   useEffect(() => {
     // Pega o nome de usuário armazenado na sessão (caso você tenha implementado login)
-    const username = "joao"; // Exemplo, você vai pegar do estado do login ou sessão
+    const username = user; // Exemplo, você vai pegar do estado do login ou sessão
 
     const fetchMedicamentos = async () => {
       try {

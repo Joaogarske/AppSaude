@@ -3,11 +3,14 @@ import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap"; // Importando os componentes do Bootstrap
 import Logo from "../picture/logo.png"
+import { useUser } from "../context/UserProvider";
 
 export function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const {login} = useUser()
+  
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -23,7 +26,9 @@ export function LoginPage() {
       // Verifica se o login foi bem-sucedido
       if (response.data === "Login bem-sucedido") {
         // Redireciona para a home após o login bem-sucedido
-        navigate("/home");
+        console.log(username)
+        login(username)
+        navigate("/home", {replace:true});
       } else {
         setError("Credenciais inválidas");
       }
